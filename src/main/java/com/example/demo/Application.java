@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.entity.Student;
+import com.example.demo.repository.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +17,7 @@ public class Application {
     CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
         return args -> {
             Student ziya = new Student(
-                    "Ziya","Huseynov","ziya2001@mail.ru",23
+                     "Ziya","Huseynov","ziya2001@mail.ru",23
             );
             studentRepository.save(ziya);
         };

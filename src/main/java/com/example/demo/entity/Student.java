@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
@@ -18,7 +19,6 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 @Setter
 @ToString
 public class Student {
-
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -40,6 +40,7 @@ public class Student {
             nullable = false,
             columnDefinition = "TEXT"
     )
+    @NotNull
     private String firstName;
 
     @Column(
