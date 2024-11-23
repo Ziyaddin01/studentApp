@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,9 +27,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Data
 public class StudentService {
-    private StudentRepository studentRepository;
-    @Autowired
-    private StudentMapper studentMapper;
+
+    private final StudentRepository studentRepository;
+
+    private final StudentMapper studentMapper;
     private static Logger logger = LoggerFactory.getLogger(StudentService.class);
 
     public Page<Student> getStudents(int page, int size) {
@@ -49,18 +49,14 @@ public class StudentService {
         student = studentRepository.save(student);
         return studentMapper.toDto(student);
     }
-    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper) {
-        this.studentRepository = studentRepository;
-        this.studentMapper = studentMapper;
-    }
 
     public List<Student> getStudents() {
         return studentRepository.findAll();
     }
 
-    public void updateStudent(StudentRequest studentRequest, Student student) {
-        studentMapper.updateEntity(studentRequest, student);
-    }
+//    public void updateStudent(StudentRequest studentRequest, Student student) {
+//        studentMapper.updateEntity(studentRequest, student);
+//    }
 
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository

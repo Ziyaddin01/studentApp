@@ -5,7 +5,7 @@ import com.example.demo.entity.Student;
 import com.example.demo.model.request.StudentRequest;
 import com.example.demo.service.StudentService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("api/v1/student")
-@AllArgsConstructor
 public class StudentController {
+
     private final StudentService studentService;
+
 
     @GetMapping("/{email}")
     public List<Student> getStudents(@PathVariable String email) {
@@ -44,7 +46,7 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<Page<Student>>getStudents(@RequestParam(defaultValue = "0")int page,
                                                     @RequestParam(defaultValue = "10")int size) {
         Page<Student> students = studentService.getStudents(page, size);
