@@ -54,9 +54,9 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-//    public void updateStudent(StudentRequest studentRequest, Student student) {
-//        studentMapper.updateEntity(studentRequest, student);
-//    }
+    public void updateStudent(StudentRequest studentRequest, Student student) {
+        studentMapper.updateEntity(studentRequest, student);
+    }
 
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository

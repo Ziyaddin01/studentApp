@@ -4,8 +4,9 @@ import com.example.demo.model.dto.StudentDTO;
 import com.example.demo.entity.Student;
 import com.example.demo.mapper.StudentMapper;
 import com.example.demo.model.request.StudentRequest;
+import org.mapstruct.Mapper;
 
-
+@Mapper
 public class StudentMapperImpl implements StudentMapper {
 
     @Override
